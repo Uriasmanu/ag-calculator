@@ -1,22 +1,22 @@
+import Card from "./assets/componentes/card";
+import EstilosGlobais from "./assets/componentes/estilosGlobais"
+import styled from "styled-components";
+
+const ContainerApp = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+`
+
 
 function App() {
 
   return (
-    <>
-      <div>
-  
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-      
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ContainerApp>
+      <EstilosGlobais/>
+      <Card/>
+    </ContainerApp>
   )
 }
 
