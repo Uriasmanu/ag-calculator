@@ -9,6 +9,38 @@ const ContainerCard = styled.div`
     padding: 2%;
     border-radius: 3% 3% 35% 3%;
 
+    section{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        div{
+            border-bottom: 1px solid #000;
+            width: 90%;
+        }
+
+        button{
+            border-radius: 50%;
+            width: 53px;
+            height: 53px;
+            display: flex;
+            background-color: hsl(259, 100%, 65%);
+            border: none;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                cursor: pointer;
+                background-color:  hsl(0, 0%, 8%);
+            }
+
+            img{
+                width: 30px;
+            
+            }
+        }
+    }
+
 `
 const Div = styled.div`
     display: flex;
@@ -21,14 +53,23 @@ const ContainerInput = styled.div`
 
     input {
         border-radius: 5px;
-        width: 80%;
-        height: 40px;
+        width: 70%;
+        height: 30px;
+        padding: 10px;
 
+        &:hover {
+            cursor: pointer;
+            
+        }
+
+        &:focus {
+            border-color: hsl(259, 100%, 65%);
+        }
     }
 
 `
 
-import icon from '../../../../public/icon-arrow.svg'
+import icon from '/public/icon-arrow.svg'
 
 const Card = () => {
     return (
@@ -49,8 +90,10 @@ const Card = () => {
                     <input type="number" id="ano" />
                 </ContainerInput>
             </Div>
-            <div></div>
-            <button> <img src={icon} alt="botao com seta para baixo" /></button>
+            <section>
+                <div></div>
+                <button> <img src={icon} alt="botao com seta para baixo" /></button>
+            </section>
         </ContainerCard>
     )
 }
