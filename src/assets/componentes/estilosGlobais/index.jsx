@@ -29,7 +29,7 @@ body {
     min-height: 100vh;
     width: 100%;
     background-color: hsl(0, 0%, 94%);
-    font-family: 'Roboto normal', sans-serif; /* Aqui você define a fonte padrão para o corpo do documento */
+    font-family: "Poppins", sans-serif;
 }
 main {
   display: block;
