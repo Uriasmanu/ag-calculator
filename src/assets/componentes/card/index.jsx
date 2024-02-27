@@ -90,6 +90,8 @@ const ContainerInput = styled.div`
         width: 70%;
         height: 30px;
         padding: 10px;
+        font-weight: bold;
+        font-size: 1.5rem;
 
         &:hover {
             cursor: pointer;
