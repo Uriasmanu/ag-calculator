@@ -15,11 +15,22 @@ const CardMaster = styled.div`
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
+
+    @media screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        background: hsl(0, 0%, 100%);
+        width: 94%;
+        height: 45%;
+        padding: 2%;
+        border-radius: 3% 3% 35% 3%;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+    }
 `
 
 const ContainerCard = styled.form`
-    
-
     section {
         display: flex;
         align-items: center;
@@ -50,6 +61,19 @@ const ContainerCard = styled.form`
             }
         }
     }
+
+    @media screen and (max-width: 600px) {
+        section{
+            margin-top: 5%;
+            width: 114%;
+        }
+
+            button{
+                z-index: 1;
+                right: 50%;
+                position: relative;
+            }
+         }
 `;
 
 const Div = styled.div`
@@ -81,6 +105,10 @@ const ContainerInput = styled.div`
     input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 33%;
     }
 `;
 
