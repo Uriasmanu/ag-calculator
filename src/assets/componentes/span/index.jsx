@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 
-const Span = ({valor}) =>{
+const Span = ({valor,texto}) =>{
     return(
-        <span>{valor}</span>
+        <h2>{valor}{texto}</h2>
     )
 
 }

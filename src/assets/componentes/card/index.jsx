@@ -1,6 +1,10 @@
 import styled from "styled-components";
+import icon from '/public/icon-arrow.svg';
+import { useContext, useState } from "react";
+import { Context } from "../../context/Context";
+import Span from "../span";
 
-const ContainerCard = styled.div`
+const CardMaster = styled.div`
     display: flex;
     flex-direction: column;
     background: hsl(0, 0%, 100%);
@@ -8,18 +12,22 @@ const ContainerCard = styled.div`
     height: 55%;
     padding: 2%;
     border-radius: 3% 3% 35% 3%;
+`
 
-    section{
+const ContainerCard = styled.form`
+    
+
+    section {
         display: flex;
         align-items: center;
         gap: 10px;
 
-        div{
+        div {
             border-bottom: 1px solid #000;
             width: 90%;
         }
 
-        button{
+        button {
             border-radius: 50%;
             width: 53px;
             height: 53px;
@@ -31,20 +39,19 @@ const ContainerCard = styled.div`
 
             &:hover {
                 cursor: pointer;
-                background-color:  hsl(0, 0%, 8%);
+                background-color: hsl(0, 0%, 8%);
             }
 
-            img{
+            img {
                 width: 30px;
-            
             }
         }
     }
+`;
 
-`
 const Div = styled.div`
     display: flex;
-`
+`;
 
 const ContainerInput = styled.div`
     display: flex;
@@ -59,12 +66,8 @@ const ContainerInput = styled.div`
 
         &:hover {
             cursor: pointer;
-            
         }
-
-       
     }
-    
     input:focus::-webkit-input-placeholder {
     color: transparent;
     border-color: hsl(259, 100%, 65%);
@@ -76,62 +79,88 @@ const ContainerInput = styled.div`
     -webkit-appearance: none;
     margin: 0;
     }
-
-
-`
-
-import icon from '/public/icon-arrow.svg'
-import { useContext } from "react";
-import { Context } from "../../context/Context";
-
+`;
 
 const Card = () => {
-    const {day, setDay} = useContext(Context)
+    const { day, setDay, month, setMonth, year, setYear } = useContext(Context);
 
-    const alterar = (event) =>{
-        setDay(event.target.value)
-    }
+    const [submittedDay, setSubmittedDay] = useState('--');
+    const [submittedMonth, setSubmittedMonth] = useState('--');
+    const [submittedYear, setSubmittedYear] = useState('--');
+
+    const alterarDay = (event) => {
+        setDay(event.target.value);
+
+    };
+
+    const alterarMonth = (event) => {
+        setMonth(event.target.value);
+    };
+
+    const alterarYear = (event) => {
+        setYear(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setSubmittedDay(day);
+        setSubmittedMonth(month);
+        setSubmittedYear(year);
+    };
 
     return (
-        <ContainerCard>
-            <Div>
-                <ContainerInput>
-                    <label htmlFor="day">Day</label>
-                    <input 
-                    type="number" 
-                    id="dia"
-                    placeholder="DD"
-                    onChange={alterar}
-                    value={day}
-                     />
-                </ContainerInput>
+        <CardMaster>
+            <ContainerCard onSubmit={handleSubmit}>
+                <Div>
+                    <ContainerInput>
+                        <label htmlFor="day">Day</label>
+                        <input
+                            type="number"
+                            id="dia"
+                            placeholder="DD"
+                            onChange={alterarDay}
+                            value={day}
+                            required
+                        />
+                    </ContainerInput>
 
-                <ContainerInput>
-                    <label htmlFor="month">Month</label>
-                    <input 
-                    type="number" 
-                    id="mes" 
-                    placeholder="MM"
+                    <ContainerInput>
+                        <label htmlFor="month">Month</label>
+                        <input
+                            type="number"
+                            id="mes"
+                            placeholder="MM"
+                            onChange={alterarMonth}
+                            value={month}
+                            required
+                        />
+                    </ContainerInput>
 
-                    />
-                </ContainerInput>
+                    <ContainerInput>
+                        <label htmlFor="year">Year</label>
+                        <input
+                            type="number"
+                            id="ano"
+                            placeholder="YYYY"
+                            onChange={alterarYear}
+                            value={year}
+                            required
+                        />
+                    </ContainerInput>
+                </Div>
+                <section>
+                    <div></div>
+                    <button> <img src={icon} alt="botao com seta para baixo" /></button>
+                </section>
 
-                <ContainerInput>
-                    <label htmlFor="year">Year</label>
-                    <input 
-                    type="number" 
-                    id="ano"
-                    placeholder="YYYY"
 
-                    />
-                </ContainerInput>
-            </Div>
-            <section>
-                <div></div>
-                <button> <img src={icon} alt="botao com seta para baixo" /></button>
-            </section>
-        </ContainerCard>
-    )
-}
+
+            </ContainerCard>
+            <Span valor={submittedYear} texto="Years" />
+            <Span valor={submittedMonth} texto="Months" />
+            <Span valor={submittedDay} texto="Days" />
+        </CardMaster>
+    );
+};
 
 export default Card;
