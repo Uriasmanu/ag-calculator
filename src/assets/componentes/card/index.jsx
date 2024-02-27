@@ -62,32 +62,68 @@ const ContainerInput = styled.div`
             
         }
 
-        &:focus {
-            border-color: hsl(259, 100%, 65%);
-        }
+       
     }
+    
+    input:focus::-webkit-input-placeholder {
+    color: transparent;
+    border-color: hsl(259, 100%, 65%);
+    
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
 
 `
 
 import icon from '/public/icon-arrow.svg'
+import { useContext } from "react";
+import { Context } from "../../context/Context";
+
 
 const Card = () => {
+    const {day, setDay} = useContext(Context)
+
+    const alterar = (event) =>{
+        setDay(event.target.value)
+    }
+
     return (
         <ContainerCard>
             <Div>
                 <ContainerInput>
                     <label htmlFor="day">Day</label>
-                    <input type="number" id="dia" />
+                    <input 
+                    type="number" 
+                    id="dia"
+                    placeholder="DD"
+                    onChange={alterar}
+                    value={day}
+                     />
                 </ContainerInput>
 
                 <ContainerInput>
                     <label htmlFor="month">Month</label>
-                    <input type="number" id="mes" />
+                    <input 
+                    type="number" 
+                    id="mes" 
+                    placeholder="MM"
+
+                    />
                 </ContainerInput>
 
                 <ContainerInput>
                     <label htmlFor="year">Year</label>
-                    <input type="number" id="ano" />
+                    <input 
+                    type="number" 
+                    id="ano"
+                    placeholder="YYYY"
+
+                    />
                 </ContainerInput>
             </Div>
             <section>
